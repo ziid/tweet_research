@@ -9,7 +9,10 @@ access_directory=$2
 shift
 queries=$*
 
+#
 # 引数エラー処理
+#
+
 if [ $# -lt 2 ] 
 then
   printf "引数エラー %s\n" "3以上の引数を指定してください"
