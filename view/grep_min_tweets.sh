@@ -29,7 +29,7 @@ fi
 #
 
 # min_tweetsがあるか確かめる
-if [ ! -f "${SAVE_TWEET_PATH}/${access_directory}" ]
+if [ ! -f "${SAVE_TWEET_PATH}/${access_directory}/min_tweets" ]
 then
   printf "実行エラー %s\n" "min_tweetsファイルがありません。gather.shを最後まで実行してください"
   exit 1
