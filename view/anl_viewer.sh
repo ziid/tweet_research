@@ -62,7 +62,7 @@ do
     # １テキストに対して複数のツイートを表示するためのループ
     for tweet in $(cat ${tweet_txt_path} | sed -e 's/\n$//g' -e 's/ /_/g')
     do
-        tweet=$(printf "%s\n" "$tweet" | tr -d '_')
+        tweet=$(printf "%s\n" "$tweet" | tr '_' ' ')
 
         printf "%s/%s\n\n" $read_counter $total_tweet_count
         printf "%s\n\n" "$tweet"
