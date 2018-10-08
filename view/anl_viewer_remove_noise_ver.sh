@@ -53,18 +53,24 @@ cd ${SAVE_TWEET_PATH}/${access_directory}/ANL/${access_YMD} || change_dir_error
 for tweet_txt_path in $(tree -i -f -L 2 | grep txt)
 do
     # １テキストに対して複数のツイートを表示するためのループ
-    for tweet in $(cat ${tweet_txt_path} | awk '{print $6 "," $13}')
+    for tweet in $(cat ${tweet_txt_path}           |
+                          grep -v "bot"            |
+                          awk '{print $6 "," $13}' |
+                          grep -E -v '^,'          |
+                          grep -E -v '^@'          |
+                          grep -v 'RT'             )
     do
-        tweet=$(printf "%s\n" "$tweet" | tr '_' ' ')
+        tweet=$(printf "%s\n" "$tweet")
 
         printf "%s\n\n" "$tweet"
         read -p "next(enter) mark(m):" input_key
 
+        printf "\n"
         # mでツイートを保存
-        case "$input_key" in 
-        "m" ) echo "mark" ;
-              printf "%s\n" "${tweet}" >> ${SAVE_MARK_PATH}/${access_directory}/${access_YMD} ;;
+        case "$input_key" in
+          "m" ) echo "mark" ;
+                printf "%s\n" "${tweet}" >> ${SAVE_MARK_PATH}/${access_directory}/${access_YMD} ;;
         esac
-        
+
     done
 done
