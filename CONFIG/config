@@ -6,5 +6,5 @@ KOTORIOTOKO_PATH=${home_dir}/COMMAND/kotoriotoko
 SAVE_TWEET_PATH=${home_dir}/SAVE_FILE/tweet
 SAVE_MARK_PATH=${home_dir}/SAVE_FILE/mark
 
-COMMAND_PATH=${home_dir}/LIB
+COMMAND_PATH=${home_dir}/COMMAND
 PATH=$PATH:${COMMAND_PATH}
